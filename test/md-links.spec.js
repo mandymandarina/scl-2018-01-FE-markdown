@@ -8,7 +8,3 @@ describe('validar funcion', () => {
   });
 });
 
-descrobe('validar parametros', () => {
-  it('debería exponer una ruta', () =>{    
-  });
-});

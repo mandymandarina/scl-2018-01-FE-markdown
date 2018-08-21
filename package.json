@@ -17,6 +17,9 @@
   ],
   "author": "Miranda Naranjo",
   "license": "ISC",
+  "bin": {
+    "md-links": "cli.js"
+  },
   "bugs": {
     "url": "https://github.com/mandymandarina/scl-2018-01-FE-markdown/issues"
   },
