@@ -4,7 +4,7 @@ require('../lib/md-links');
 
 describe('validar funcion', () => {  
   it('debería exponer función mdLinks', () => {
-    assert.isFunction(mdLinks);
+    assert.isFunction(markdownLinkExtractor);
   });
 });
 

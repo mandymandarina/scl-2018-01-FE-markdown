@@ -10,11 +10,12 @@ console.log(`Current directory: ${process.cwd()}`);
 const directory = process.cwd();
 let directory2 = 'md';
 // transforma el contenido del archivo a strin
-let dirBuf = Buffer.from(directory);
+let dirRe = Buffer.from(directory);
+//let dirpath = Buffer.from(path);
 
-fs.readdir(dirBuf, (err, files) => {
+fs.readdir(dirRe, (err, files) => {
   if(err){
-    console.log(err.message);
+    console.log("###"+err.message);
   }else{
     console.log(files);
   }  
@@ -26,8 +27,8 @@ fs.readdir(dirBuf, (err, files) => {
        if (err) {
         console.log(err.message);
       } else{
-        console.log(data);
-        index.mdLinks(data);
+        //console.log(data);
+        console.log(mdLinks(data));
       }    
      })
     }
