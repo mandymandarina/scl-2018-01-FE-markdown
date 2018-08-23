@@ -5,13 +5,31 @@ const path = require('path');
 const [, , ...args] = process.argv;
 const mdLinks = require('./lib/md-links');
 
-fs.readdir(`${args}`, (err, data) => {
-  console.log(data);
-  for (let i = 0; i < data.length; i++) {
-    if (path.extname(data[i]) === '.md') {
-     console.log(data[i]);
+console.log(`Current directory: ${process.cwd()}`);
+
+const directory = process.cwd();
+let directory2 = 'md';
+let dirBuf = Buffer.from(directory);
+
+fs.readdir(dirBuf, (err, files) => {
+  if(err){
+    console.log(err.message);
+  }else{
+    console.log(files);
+  }  
+  console.log(files);
+  for (let i = 0; i < files.length; i++) {
+    if (path.extname(files[i]) === '.md') {
+     console.log(files[i]);
+     fs.readFile(files[i], 'utf8', function (err, data){
+       if (err) {
+        console.log(err.message);
+      } else{
+        console.log(data);
+      }    
+     })
     }
-  }
+  }  
 });
 
 /*
