@@ -1,3 +1,19 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const [, , ...args] = process.argv;
+const mdLinks = require('./lib/md-links');
+
+fs.readdir(`${args}`, (err, data) => {
+  console.log(data);
+  for (let i = 0; i < data.length; i++) {
+    if (path.extname(data[i]) === '.md') {
+     console.log(data[i]);
+    }
+  }
+});
+
 /*
 "use strict";
 
@@ -13,6 +29,7 @@ links.forEach(function (link) {
 });
 */
 
+/*
 const fs = require('fs');
 const markdownLinks = require('./lib/md-links.js');
 
@@ -27,4 +44,8 @@ const links = markdownLinks(markdown);
 links.array.forEach(link => {
   console.log(link);
 });
+*/
+
+
+
 
