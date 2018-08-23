@@ -2,12 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
-
+const Marked = require('marked');
 const mdLinks = require('./lib/md-links');
 
 // me entrega la ruta de mis archivos a recorrer
 console.log(`Current directory: ${process.cwd()}`);
-
 const directory = process.cwd();
 let directory2 = 'md';
 // transforma el contenido del archivo a strin
@@ -28,6 +27,7 @@ fs.readdir(dirBuf, (err, files) => {
         console.log(err.message);
       } else{
         console.log(data);
+        index.mdLinks(data);
       }    
      })
     }
