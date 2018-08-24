@@ -9,7 +9,7 @@ const fetch = require('node-fetch');
 // me entrega la ruta de mis archivos a recorrer
 console.log(`Current directory: ${process.cwd()}`);
 const directory = process.cwd();
-let directory2 = 'md';
+//let directory2 = 'md';
 // transforma el contenido del archivo a strin
 let dirRe = Buffer.from(directory);
 //let dirpath = Buffer.from(path);
@@ -28,13 +28,22 @@ fs.readdir(dirRe, (err, files) => {
        if (err) {
         console.log(err.message);
       } else{
-        //console.log(data);
+        console.log(data);        
         console.log(mdLinks(data));
         mdLinks(data).forEach(element =>{
-          console.log(element.href);
+        console.log(element.href);
+        var ks = element.href.indexOf();
+          console.log(ks);          
+        if ({validate:true}){
         fetch(element.href).then((response) => {
-            console.log(response.statusText);
-        })        
+          
+          console.log(files[i], element.href, response.status, response.statusText);
+          //console.log(response.statusText);
+        
+        }) 
+      } else {
+        console.log(err.message);
+      }   
         })
       }    
      })
