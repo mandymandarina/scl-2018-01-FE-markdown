@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const Marked = require('marked');
 const mdLinks = require('./lib/md-links');
+const fetch = require('node-fetch');
 
 // me entrega la ruta de mis archivos a recorrer
 console.log(`Current directory: ${process.cwd()}`);
@@ -29,6 +30,12 @@ fs.readdir(dirRe, (err, files) => {
       } else{
         //console.log(data);
         console.log(mdLinks(data));
+        mdLinks(data).forEach(element =>{
+          console.log(element.href);
+        fetch(element.href).then((response) => {
+            console.log(response.statusText);
+        })        
+        })
       }    
      })
     }
