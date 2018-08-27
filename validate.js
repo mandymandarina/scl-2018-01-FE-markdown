@@ -6,9 +6,9 @@ const fetch = require('node-fetch');
 
 const mdLinks = require('./lib/md-links');
 
-mdLinks.linksLine = (path) => {
+mdLinks.linksLineValidate = (path) => {
  
 }
 
-module.exports = mdLinks.linksLine;
+module.exports = mdLinks.linksLineValidate;
 
