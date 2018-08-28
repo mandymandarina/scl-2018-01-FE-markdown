@@ -1,97 +1,41 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const path = require('path');
+const pathNode = require('path');
 const Marked = require('marked');
-const mdLinks = require('./lib/md-links');
 const fetch = require('node-fetch');
+const index = require('./index')
+
+const mdLinks = require('./md-links');
 const [, , ...args] = process.argv;
 
-// me entrega la ruta de mis archivos a recorrer
-console.log(`Current directory: ${process.cwd()}`);
-const directory = process.cwd();
-//let directory2 = 'md';
-// transforma el contenido del archivo a strin
-//console.log(`Directorio actual: ${__dirname}`);
-//const directory = __dirname;
-let dirRe = Buffer.from(directory);
-//let dirpath = Buffer.from(path);
-
-fs.readdir(dirRe, (err, files) => {
-  if (err) {
-    console.log("###" + err.message);
-  } else {
-    console.log(files);
+if (require.main === module) {  
+  let options = {};
+  if (args.includes('--validate')) {
+    options.validate = true;  
   }
-  console.log(files);
-  for (let i = 0; i < files.length; i++) {
-    if (path.extname(files[i]) === '.md') {
-      console.log(files[i]);
-      fs.readFile(files[i], 'utf8', function (err, data) {
-        if (err) {
-          console.log(err.message);
-        } else {
-          console.log(data);
-          console.log(mdLinks(data));
-
-          mdLinks(data).forEach(element => {
-            console.log(element.href); 
-              
-            if ({ validate: true }) { 
-              let line = data.split('\n').forEach((element, index) => {
-                const linkLine = console.log("holi", index); 
-              }); 
-
-              fetch(element.href).then((response) => {                
-                  console.log(files[i], element.href, response.status, response.statusText);    
-                    
-                               
-              })
-              
-            } else {
-              console.log(err.message);
-            }
-            
-          })
-        
-        }
-      })
+  mdLinks(args[0], options).then((data) => {
+    if (data.length === 0) {  
+    console.error('###');
     }
-  }
-});
-
-/*
-"use strict";
-
-var fs = require('fs');
-var markdownLinkExtractor = require('markdown-link-extractor');
-
-var markdown = fs.readFileSync('README.md').toString();
-
-var links = markdownLinkExtractor(markdown);
-
-links.forEach(function (link) {
-    console.log(link);
-});
-*/
-
-/*
-const fs = require('fs');
-const markdownLinks = require('./lib/md-links.js');
-
-window.validateLink = () => {
-  const markdown = fs.readFileSync('README.md').toString();
+    linksData.forEach(element => {    
+    // let resultData = '';
+    
+    const [, , ...userCLIArgs] = process.argv;
+    //Process.argv > ["/usr/bin/node","/home/fabian/Projects/Clases/2018-1-TallerPromesasPathTerminal/app.js"]
+    //Por cada espacio se hace un nuevo elemento en process.argv 
+    console.log("User args > " + JSON.stringify(userCLIArgs));
+    //User args > ["HoliHoli","--validate","--stats"]
+    readFilePromise(path.join(process.cwd(), userCLIArgs[0])).then((data) => {
+        console.log("Contenido del archivo > " + JSON.stringify(data.split('\n')));
+        //forEach((elemento, index)=>{})
+    }).catch((error) => {
+        console.error("Error > " + error);
+    });       
+     
+  });
+  }).catch((error) => {
+    console.error(error);
+  });
 }
-
-
-
-const links = markdownLinks(markdown);
-
-links.array.forEach(link => {
-  console.log(link);
-});
-*/
-
-
-
 
