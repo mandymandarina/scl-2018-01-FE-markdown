@@ -7,6 +7,9 @@ const fetch = require('node-fetch');
 const mdLinks = require('./lib/md-links');
 const [, , ...args] = process.argv;
 
+mdLinks();
+
+/*
 if (require.main === module) {  
   let options = {};
   if (args.includes('--validate')) {
@@ -20,4 +23,5 @@ if (require.main === module) {
     console.error(error);
   });
 }
+*/
 
