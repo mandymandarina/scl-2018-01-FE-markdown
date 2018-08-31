@@ -1,5 +1,5 @@
 
 lista links
 
-https://www.w3schools.com/nodejs/met_buffer_from.asp
-https://translate.google.com/?hl=es
+[w3schools](https://www.w3schools.com/nodejs/met_buffer_from.asp)
+[translate](https://translate.google.com/?hl=es)
