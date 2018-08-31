@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const pathNode = require('path');
+const path = require('path');
 const Marked = require('marked');
 const fetch = require('node-fetch');
 const mdLinks = require('./lib/md-links');
 const [, , ...args] = process.argv;
+const arFiles = args[0];
+let pathFileAbs = path.resolve(arFiles);
 
-mdLinks();
+
+mdLinks(pathFileAbs);
 
 /*
 if (require.main === module) {  
