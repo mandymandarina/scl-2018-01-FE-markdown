@@ -17,13 +17,13 @@ $npm install node-fetch --save
 ```
 
 ## Para la instalación
-
+Por la pagina node.js se puede hacer la instalación de este modo.
 para poder integrarlo en tu proyecto es necesario que sigas los siguientes pasos:
 
 - Para instalar debes colocar lo siguiente:
 
 ```sh
-$npm install SearchLinks -g
+$npm install search-links -g
 ```
 - Luego de esto, ejecutas el comando a contunuación, son los que te devolveran una lista de los links que contiene el archivo.
 
@@ -57,6 +57,8 @@ $ mdlinks <nombre-de-archivo.md> --validate
 - `Leer un Directorio:`(https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
 
 El proyecto se subió a Github y se puede encontrar dando clik en el siguiente [link](https://github.com/mandymandarina/scl-2018-01-FE-markdown)
+
+Para esta instalación debes descargar el archivo en el links anterior, extraer el archivo descargado desde el zip, Instalar npm install -g (desde su consola)
 
 
 
