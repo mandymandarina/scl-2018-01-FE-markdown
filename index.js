@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 const mdLinks = require('./lib/md-links');
 const [, , ...args] = process.argv;
 const arFiles = args[0];
-let pathFileAbs = path.resolve(arFiles);
+let pathFileAbs = path.resolve(arFiles);// path.resolve devuelve una ruta absoluta de archivo
 
 
 mdLinks(pathFileAbs);
